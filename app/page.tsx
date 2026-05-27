@@ -1,3 +1,27 @@
+const currentStatus = [
+  {
+    emoji: "✅",
+    site: "Hauppauge, NY",
+    headline: "Internet upgraded — DONE!",
+    detail: "The new 1 Gbps high-speed connection is live and working.",
+    tone: "green",
+  },
+  {
+    emoji: "⏳",
+    site: "Roanoke, VA",
+    headline: "Waiting on Verizon",
+    detail: "We placed the order. Verizon is working on it. Nothing to do but wait.",
+    tone: "amber",
+  },
+  {
+    emoji: "📦",
+    site: "Video Gear — Both Sites",
+    headline: "Equipment ordered today (May 27)!",
+    detail: "New Neat Board Pro screens ordered now to lock in pricing before a 5% price increase on June 1.",
+    tone: "blue",
+  },
+];
+
 const carrierTimelineNote =
   "Carrier upgrade timelines with our last-mile providers average approximately 90-120 days, although in some cases the turnaround time may be sooner.";
 
@@ -164,8 +188,60 @@ function CheckIcon() {
 }
 
 export default function Home() {
+  const statusToneMap: Record<string, { bar: string; bg: string; border: string; badge: string; badgeText: string; text: string }> = {
+    green: {
+      bar: "bg-emerald-500",
+      bg: "bg-emerald-50",
+      border: "border-emerald-200",
+      badge: "bg-emerald-100 text-emerald-800",
+      badgeText: "text-emerald-900",
+      text: "text-emerald-800",
+    },
+    amber: {
+      bar: "bg-amber-400",
+      bg: "bg-amber-50",
+      border: "border-amber-200",
+      badge: "bg-amber-100 text-amber-800",
+      badgeText: "text-amber-900",
+      text: "text-amber-800",
+    },
+    blue: {
+      bar: "bg-blue-500",
+      bg: "bg-blue-50",
+      border: "border-blue-200",
+      badge: "bg-blue-100 text-blue-800",
+      badgeText: "text-blue-900",
+      text: "text-blue-800",
+    },
+  };
+
   return (
     <main className="min-h-screen">
+
+      {/* ── CURRENT STATUS ── big, plain, impossible to miss ── */}
+      <section className="border-b-2 border-slate-900 bg-slate-950 px-5 py-8 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-7xl">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">What&apos;s happening right now</p>
+          <h2 className="mt-2 text-2xl font-bold text-white sm:text-3xl">Current Status</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
+            {currentStatus.map((item) => {
+              const t = statusToneMap[item.tone];
+              return (
+                <div key={item.site} className={`rounded-2xl border-2 ${item.tone === "green" ? "border-emerald-400" : item.tone === "amber" ? "border-amber-400" : "border-blue-400"} bg-white p-5`}>
+                  <div className={`mb-3 h-1.5 w-full rounded-full ${t.bar}`} />
+                  <div className="flex items-center gap-2">
+                    <span className="text-3xl">{item.emoji}</span>
+                    <span className={`rounded-full px-3 py-1 text-xs font-bold ${t.badge}`}>{item.site}</span>
+                  </div>
+                  <p className={`mt-3 text-xl font-bold ${t.badgeText}`}>{item.headline}</p>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">{item.detail}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       <section className="border-b border-slate-200 bg-white/80">
         <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-10">
           <div className="grid gap-8 lg:grid-cols-[1.45fr_0.75fr] lg:items-end">
