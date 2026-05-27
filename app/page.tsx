@@ -2,10 +2,13 @@ const carrierTimelineNote =
   "Carrier upgrade timelines with our last-mile providers average approximately 90-120 days, although in some cases the turnaround time may be sooner.";
 
 const statusPills = [
-  { label: "Bandwidth Upgrade", value: "In Progress", tone: "amber" },
-  { label: "Video Conferencing Upgrade", value: "Planning / Install Prep", tone: "blue" },
+  { label: "Bandwidth Upgrade", value: "Hauppauge: Live · Roanoke: Pending", tone: "amber" },
+  { label: "Video Conferencing Upgrade", value: "Equipment Ordered — Install Prep", tone: "blue" },
   { label: "Sites", value: "Roanoke VA + Hauppauge NY", tone: "green" },
 ];
+
+const videoEquipNotice =
+  "Neat Board Pro equipment order placed May 27, 2026 — purchased ahead of 5% price increase effective June 1, 2026.";
 
 const summaries = [
   {
@@ -31,8 +34,11 @@ const sites = [
   {
     city: "Roanoke, VA",
     address: "350 East Park Dr, Roanoke, VA 24019",
+    statusLabel: "Awaiting Carrier",
+    statusTone: "amber",
+    note: "Awaiting Verizon circuit upgrade. Carrier provisioning in progress.",
     details: [
-      ["Bandwidth", "300 Mbps to 1 Gbps"],
+      ["Bandwidth", "300 Mbps → 1 Gbps (Pending)"],
       ["DIA", "1 Gb"],
       ["E-LAN", "1 Gb"],
       ["Backup Circuit", "Included"],
@@ -43,8 +49,11 @@ const sites = [
   {
     city: "Hauppauge, NY",
     address: "700 Veterans Hwy, Suite 300, Hauppauge, NY 11788",
+    statusLabel: "Bandwidth Live",
+    statusTone: "green",
+    note: "1 Gbps circuit upgrade complete and live.",
     details: [
-      ["Bandwidth", "300 Mbps to 1 Gbps"],
+      ["Bandwidth", "1 Gbps (Upgraded ✓)"],
       ["DIA", "1 Gb"],
       ["E-LAN", "1 Gb"],
       ["Backup Circuit", "Included"],
@@ -57,10 +66,10 @@ const sites = [
 const timeline = [
   { label: "Planning", state: "complete" },
   { label: "Carrier order submitted", state: "complete" },
-  { label: "Site access and scheduling coordination", state: "active" },
-  { label: "Carrier upgrade window", state: "upcoming" },
-  { label: "Bandwidth upgrade implementation", state: "upcoming" },
-  { label: "Conference room hardware layout finalized", state: "active" },
+  { label: "Site access and scheduling coordination", state: "complete" },
+  { label: "Carrier upgrade window", state: "active" },
+  { label: "Bandwidth upgrade implementation — Hauppauge complete, Roanoke pending Verizon", state: "active" },
+  { label: "Conference room hardware layout finalized — equipment ordered 5/27", state: "active" },
   { label: "Install / cutover", state: "upcoming" },
   { label: "Validation and user testing", state: "upcoming" },
   { label: "Completed", state: "upcoming" },
@@ -95,7 +104,10 @@ const projectDetails = [
   ["Backup", "Diverse Business Class Backup Circuit"],
   ["Router", "Managed Router included"],
   ["Sites", "Roanoke VA and Hauppauge NY"],
+  ["Hauppauge Status", "1 Gbps bandwidth upgrade complete and live"],
+  ["Roanoke Status", "Awaiting Verizon circuit upgrade"],
   ["Video Upgrade", "Polycom Group Series 500 to Neat Board Pro 65 inch"],
+  ["Video Equipment", "Neat Board Pro ordered May 27, 2026 (ahead of 6/1 price increase)"],
   ["Displays", "Samsung BE65FX-H 65 inch 4K"],
   ["Timeline Note", carrierTimelineNote],
 ];
@@ -183,16 +195,16 @@ export default function Home() {
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <span className="text-sm font-medium text-slate-300">Current Phase</span>
                 <span className="rounded-full bg-amber-400/15 px-3 py-1 text-xs font-bold text-amber-200">
-                  Scheduling / Install Prep
+                  Hauppauge Live · Roanoke Pending
                 </span>
               </div>
               <div className="mt-5">
                 <div className="flex items-end justify-between">
-                  <span className="text-4xl font-semibold">42%</span>
+                  <span className="text-4xl font-semibold">62%</span>
                   <span className="text-sm text-slate-300">overall readiness</span>
                 </div>
                 <div className="mt-4 h-3 rounded-full bg-white/10">
-                  <div className="h-3 w-[42%] rounded-full bg-blue-400" />
+                  <div className="h-3 w-[62%] rounded-full bg-blue-400" />
                 </div>
               </div>
               <p className="mt-5 text-sm leading-6 text-slate-300">{carrierTimelineNote}</p>
@@ -223,39 +235,61 @@ export default function Home() {
               </article>
             ))}
           </div>
+          <div className="mt-4 flex items-start gap-3 rounded-xl border border-blue-200 bg-blue-50 px-5 py-4">
+            <span className="mt-0.5 text-lg">📦</span>
+            <p className="text-sm font-medium leading-6 text-blue-900">{videoEquipNotice}</p>
+          </div>
         </section>
 
         <section className="mt-12">
           <SectionHeader eyebrow="Site Status" title="Roanoke and Hauppauge readiness view" />
           <div className="grid gap-5 lg:grid-cols-2">
-            {sites.map((site) => (
-              <article key={site.city} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <h3 className="text-2xl font-semibold text-slate-950">{site.city}</h3>
-                    <p className="mt-2 text-sm leading-6 text-slate-500">{site.address}</p>
-                  </div>
-                  <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-1 text-xs font-bold text-amber-800">
-                    Active
-                  </span>
-                </div>
-                <dl className="mt-6 grid gap-3">
-                  {site.details.map(([label, value]) => (
-                    <div key={label} className="flex items-center justify-between gap-4 border-t border-slate-100 pt-3">
-                      <dt className="text-sm font-medium text-slate-500">{label}</dt>
-                      <dd className="text-right text-sm font-semibold text-slate-900">{value}</dd>
+            {sites.map((site) => {
+              const isGreen = site.statusTone === "green";
+              return (
+                <article key={site.city} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="text-2xl font-semibold text-slate-950">{site.city}</h3>
+                      <p className="mt-2 text-sm leading-6 text-slate-500">{site.address}</p>
                     </div>
-                  ))}
-                </dl>
-              </article>
-            ))}
+                    <span
+                      className={`rounded-full border px-3 py-1 text-xs font-bold ${
+                        isGreen
+                          ? "border-emerald-200 bg-emerald-50 text-emerald-800"
+                          : "border-amber-200 bg-amber-50 text-amber-800"
+                      }`}
+                    >
+                      {site.statusLabel}
+                    </span>
+                  </div>
+                  {site.note && (
+                    <p
+                      className={`mt-3 rounded-lg px-3 py-2 text-sm font-medium ${
+                        isGreen ? "bg-emerald-50 text-emerald-800" : "bg-amber-50 text-amber-800"
+                      }`}
+                    >
+                      {site.note}
+                    </p>
+                  )}
+                  <dl className="mt-4 grid gap-3">
+                    {site.details.map(([label, value]) => (
+                      <div key={label} className="flex items-center justify-between gap-4 border-t border-slate-100 pt-3">
+                        <dt className="text-sm font-medium text-slate-500">{label}</dt>
+                        <dd className="text-right text-sm font-semibold text-slate-900">{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </article>
+              );
+            })}
           </div>
         </section>
 
         <section className="mt-12">
           <SectionHeader
             eyebrow="Progress Timeline"
-            title="Current phase: Scheduling / Install Prep"
+            title="Current phase: Hauppauge bandwidth live · Roanoke awaiting Verizon"
             copy={carrierTimelineNote}
           />
           <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
