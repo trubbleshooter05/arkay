@@ -248,6 +248,52 @@ export default function Home() {
   return (
     <main className="min-h-screen">
 
+      {/* ── PROJECT UPDATE SUMMARY ── */}
+      <section className="border-b border-blue-100 bg-blue-600 px-5 py-6 sm:px-8 lg:px-10">
+        <div className="mx-auto max-w-7xl">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-200">Project Update</p>
+            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-white">May 29, 2026</span>
+          </div>
+          <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-xl bg-white/10 p-4">
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Bandwidth Upgrades</p>
+              <ul className="space-y-2 text-sm leading-6 text-white">
+                <li><span className="font-semibold">Hauppauge, NY</span> — 1 Gbps upgrade complete and live ✅</li>
+                <li><span className="font-semibold">Roanoke, VA</span> — Awaiting Verizon provisioning ⏳</li>
+              </ul>
+            </div>
+            <div className="rounded-xl bg-white/10 p-4">
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Video Equipment</p>
+              <ul className="space-y-2 text-sm leading-6 text-white">
+                <li>Neat Board Pro order placed <span className="font-semibold">May 27, 2026</span></li>
+                <li>Ordered ahead of 5% price increase on June 1</li>
+                <li>Includes systems, 65″ displays &amp; wall mounts</li>
+              </ul>
+            </div>
+            <div className="rounded-xl bg-white/10 p-4">
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Facility Prep</p>
+              <ul className="space-y-2 text-sm leading-6 text-white">
+                <li><span className="font-semibold">Virginia</span> — Wall repaint before install</li>
+                <li><span className="font-semibold">Hauppauge</span> — Spackle, repairs &amp; wallpaper work</li>
+              </ul>
+            </div>
+            <div className="rounded-xl bg-white/10 p-4">
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Installation</p>
+              <ul className="space-y-2 text-sm leading-6 text-white">
+                <li>Pro installers assigned to each site</li>
+                <li>Scheduling in progress</li>
+                <li>Final validation includes Microsoft Teams testing</li>
+              </ul>
+              <div className="mt-3 border-t border-white/20 pt-3">
+                <p className="text-xs font-bold text-blue-200">Overall Readiness</p>
+                <p className="text-2xl font-bold text-white">62%</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── CURRENT STATUS ── big, plain, impossible to miss ── */}
       <section className="border-b-2 border-slate-900 bg-slate-950 px-5 py-8 sm:px-8 lg:px-10">
         <div className="mx-auto max-w-7xl">
