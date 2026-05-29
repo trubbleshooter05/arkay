@@ -1,3 +1,33 @@
+const confRoomEquipment = [
+  "Neat video conferencing systems for each location",
+  "65-inch conference room displays",
+  "Wall mounts for all displays",
+];
+
+const confRoomFacilities = [
+  {
+    site: "Virginia Facility",
+    tone: "amber",
+    items: ["Conference room wall will be repainted prior to equipment installation."],
+  },
+  {
+    site: "Hauppauge Facility",
+    tone: "blue",
+    items: [
+      "Conference room wall repairs will be completed.",
+      "Existing wall imperfections will be spackled and repaired.",
+      "Wallpaper work will be completed as needed before installation.",
+    ],
+  },
+];
+
+const confRoomInstall = [
+  "Professional installers will be assigned to each facility.",
+  "Installation scheduling is currently being coordinated.",
+  "Equipment will be mounted, configured, tested, and validated as part of the deployment.",
+  "Final testing will include Microsoft Teams meeting functionality and room device validation.",
+];
+
 const currentStatus = [
   {
     emoji: "✅",
@@ -246,6 +276,8 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-10">
           <div className="grid gap-8 lg:grid-cols-[1.45fr_0.75fr] lg:items-end">
             <div>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/arkay-logo.png" alt="Arkay Packaging" className="mb-5 h-14 w-auto" />
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-700">
                 Internal IT project dashboard
               </p>
@@ -288,6 +320,89 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── CONFERENCE ROOM MODERNIZATION ── */}
+      <div className="border-b border-slate-200 bg-slate-50">
+        <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-10">
+          <SectionHeader
+            eyebrow="Project Milestone"
+            title="Conference Room Modernization"
+            copy="Video conferencing equipment has been ordered for all Arkay facilities as of May 27, 2026."
+          />
+
+          <div className="grid gap-5 lg:grid-cols-3">
+            {/* Equipment ordered */}
+            <article className="rounded-2xl border border-emerald-200 bg-white p-6 shadow-sm">
+              <div className="mb-3 flex items-center gap-2">
+                <span className="text-2xl">📦</span>
+                <span className="rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">Equipment Ordered</span>
+              </div>
+              <h3 className="text-lg font-semibold text-slate-950">Equipment ordered includes:</h3>
+              <ul className="mt-4 space-y-3">
+                {confRoomEquipment.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm leading-6 text-slate-700">
+                    <span className="mt-1 text-emerald-600">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            {/* Facility prep */}
+            <article className="rounded-2xl border border-blue-200 bg-white p-6 shadow-sm">
+              <div className="mb-3 flex items-center gap-2">
+                <span className="text-2xl">🏗️</span>
+                <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-800">Facility Preparation</span>
+              </div>
+              <h3 className="text-lg font-semibold text-slate-950">Site prep before install:</h3>
+              <div className="mt-4 space-y-5">
+                {confRoomFacilities.map((fac) => (
+                  <div key={fac.site}>
+                    <p className={`mb-2 text-xs font-bold uppercase tracking-wide ${fac.tone === "amber" ? "text-amber-700" : "text-blue-700"}`}>
+                      {fac.site}
+                    </p>
+                    <ul className="space-y-2">
+                      {fac.items.map((item) => (
+                        <li key={item} className="flex items-start gap-2 text-sm leading-6 text-slate-700">
+                          <span className="mt-1 text-slate-400">•</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </article>
+
+            {/* Install plan */}
+            <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div className="mb-3 flex items-center gap-2">
+                <span className="text-2xl">🔧</span>
+                <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-700">Installation Plan</span>
+              </div>
+              <h3 className="text-lg font-semibold text-slate-950">How it gets installed:</h3>
+              <ul className="mt-4 space-y-3">
+                {confRoomInstall.map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-sm leading-6 text-slate-700">
+                    <span className="mt-1 text-blue-500">→</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </article>
+          </div>
+
+          {/* Business benefit */}
+          <div className="mt-5 rounded-2xl border border-slate-900 bg-slate-950 px-6 py-5 text-white">
+            <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-400">Business Benefit</p>
+            <p className="mt-2 text-base leading-7 text-slate-200">
+              The conference room modernization project will provide a consistent meeting experience across all facilities,
+              improve audio and video quality, simplify meeting participation, and support the broader Microsoft Teams,
+              Copilot, and AI collaboration initiatives.
+            </p>
+          </div>
+        </div>
+      </div>
 
       <div className="mx-auto max-w-7xl px-5 py-10 sm:px-8 lg:px-10">
         <section>
