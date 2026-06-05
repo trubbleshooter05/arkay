@@ -30,25 +30,25 @@ const confRoomInstall = [
 
 const currentStatus = [
   {
-    emoji: "✅",
-    site: "Hauppauge, NY",
-    headline: "Internet upgraded — DONE!",
-    detail: "The new 1 Gbps high-speed connection is live and working.",
+    emoji: "⚠️",
+    site: "Hauppauge, NY — Bandwidth",
+    headline: "Speeds not where they should be",
+    detail: "Circuit is up but speed tests are underperforming. Meeting with ISP on-site this Saturday to investigate and resolve.",
+    tone: "amber",
+  },
+  {
+    emoji: "📦",
+    site: "Hauppauge, NY — Equipment",
+    headline: "All gear has arrived!",
+    detail: "Neat Board Pro, 65\" display, and wall mount are on-site. Ready for installation.",
     tone: "green",
   },
   {
     emoji: "⏳",
     site: "Roanoke, VA",
-    headline: "Waiting on Verizon",
-    detail: "We placed the order. Verizon is working on it. Nothing to do but wait.",
-    tone: "amber",
-  },
-  {
-    emoji: "📦",
-    site: "Video Gear — Both Sites",
-    headline: "Equipment ordered today (May 27)!",
-    detail: "New Neat Board Pro screens ordered now to lock in pricing before a 5% price increase on June 1.",
-    tone: "blue",
+    headline: "No updates yet",
+    detail: "Bandwidth upgrade not yet received. Equipment not yet delivered — wall mount has arrived, rest still pending.",
+    tone: "red",
   },
 ];
 
@@ -56,9 +56,10 @@ const carrierTimelineNote =
   "Carrier upgrade timelines with our last-mile providers average approximately 90-120 days, although in some cases the turnaround time may be sooner.";
 
 const statusPills = [
-  { label: "Bandwidth Upgrade", value: "Hauppauge: Live · Roanoke: Pending", tone: "amber" },
-  { label: "Video Conferencing Upgrade", value: "Equipment Ordered — Install Prep", tone: "blue" },
-  { label: "Sites", value: "Roanoke VA + Hauppauge NY", tone: "green" },
+  { label: "Hauppauge Bandwidth", value: "Up — Speed Issue Under Investigation", tone: "amber" },
+  { label: "Roanoke Bandwidth", value: "Not Yet Received", tone: "amber" },
+  { label: "Hauppauge Equipment", value: "Arrived ✓", tone: "green" },
+  { label: "Roanoke Equipment", value: "Wall Mount Only — Rest Pending", tone: "amber" },
 ];
 
 const videoEquipNotice =
@@ -88,31 +89,31 @@ const sites = [
   {
     city: "Roanoke, VA",
     address: "350 East Park Dr, Roanoke, VA 24019",
-    statusLabel: "Awaiting Carrier",
+    statusLabel: "No Updates Yet",
     statusTone: "amber",
-    note: "Awaiting Verizon circuit upgrade. Carrier provisioning in progress.",
+    note: "Bandwidth upgrade not yet received from Verizon. Equipment not yet delivered — wall mount has arrived, Neat Board Pro and display still pending.",
     details: [
-      ["Bandwidth", "300 Mbps → 1 Gbps (Pending)"],
-      ["DIA", "1 Gb"],
-      ["E-LAN", "1 Gb"],
+      ["Bandwidth", "300 Mbps (Upgrade Pending)"],
+      ["DIA", "1 Gb — Pending"],
+      ["E-LAN", "1 Gb — Pending"],
       ["Backup Circuit", "Included"],
       ["Managed Router", "Included"],
-      ["Video Room", "Polycom to Neat Board Pro 65 inch"],
+      ["Equipment", "Wall mount arrived — Neat Board & display pending"],
     ],
   },
   {
     city: "Hauppauge, NY",
     address: "700 Veterans Hwy, Suite 300, Hauppauge, NY 11788",
-    statusLabel: "Bandwidth Live",
+    statusLabel: "Equipment Arrived",
     statusTone: "green",
-    note: "1 Gbps circuit upgrade complete and live.",
+    note: "Neat Board Pro, 65\" display, and wall mount have arrived. Bandwidth circuit is up but speed test results are underperforming — ISP meeting scheduled Saturday to investigate.",
     details: [
-      ["Bandwidth", "1 Gbps (Upgraded ✓)"],
+      ["Bandwidth", "1 Gbps circuit up — speeds under investigation ⚠️"],
+      ["ISP Meeting", "On-site Saturday to run speed tests"],
       ["DIA", "1 Gb"],
       ["E-LAN", "1 Gb"],
       ["Backup Circuit", "Included"],
-      ["Managed Router", "Included"],
-      ["Video Room", "Polycom to Neat Board Pro 65 inch"],
+      ["Equipment", "Neat Board Pro, 65\" display & wall mount — all on-site ✓"],
     ],
   },
 ];
@@ -121,10 +122,11 @@ const timeline = [
   { label: "Planning", state: "complete" },
   { label: "Carrier order submitted", state: "complete" },
   { label: "Site access and scheduling coordination", state: "complete" },
-  { label: "Carrier upgrade window", state: "active" },
-  { label: "Bandwidth upgrade implementation — Hauppauge complete, Roanoke pending Verizon", state: "active" },
-  { label: "Conference room hardware layout finalized — equipment ordered 5/27", state: "active" },
-  { label: "Install / cutover", state: "upcoming" },
+  { label: "Equipment ordered — Neat Board Pro, displays, wall mounts (5/27)", state: "complete" },
+  { label: "Hauppauge equipment delivered — Neat Board Pro, 65\" TV, wall mount on-site", state: "complete" },
+  { label: "Hauppauge bandwidth circuit up — speed issue being investigated, ISP meeting Saturday", state: "active" },
+  { label: "Roanoke bandwidth & remaining equipment — no update yet", state: "active" },
+  { label: "Install / cutover — both sites", state: "upcoming" },
   { label: "Validation and user testing", state: "upcoming" },
   { label: "Completed", state: "upcoming" },
 ];
@@ -158,8 +160,10 @@ const projectDetails = [
   ["Backup", "Diverse Business Class Backup Circuit"],
   ["Router", "Managed Router included"],
   ["Sites", "Roanoke VA and Hauppauge NY"],
-  ["Hauppauge Status", "1 Gbps bandwidth upgrade complete and live"],
-  ["Roanoke Status", "Awaiting Verizon circuit upgrade"],
+  ["Hauppauge Bandwidth", "Circuit up — speed tests underperforming, ISP meeting Saturday"],
+  ["Hauppauge Equipment", "Neat Board Pro, 65\" display, wall mount — all on-site"],
+  ["Roanoke Bandwidth", "Not yet received — Verizon provisioning pending"],
+  ["Roanoke Equipment", "Wall mount on-site — Neat Board Pro & display still pending"],
   ["Video Upgrade", "Polycom Group Series 500 to Neat Board Pro 65 inch"],
   ["Video Equipment", "Neat Board Pro ordered May 27, 2026 (ahead of 6/1 price increase)"],
   ["Displays", "Samsung BE65FX-H 65 inch 4K"],
@@ -243,6 +247,14 @@ export default function Home() {
       badgeText: "text-blue-900",
       text: "text-blue-800",
     },
+    red: {
+      bar: "bg-red-400",
+      bg: "bg-red-50",
+      border: "border-red-200",
+      badge: "bg-red-100 text-red-800",
+      badgeText: "text-red-900",
+      text: "text-red-800",
+    },
   };
 
   return (
@@ -253,37 +265,38 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-200">Project Update</p>
-            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-white">May 29, 2026</span>
+            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-white">June 4, 2026</span>
           </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-xl bg-white/10 p-4">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Bandwidth Upgrades</p>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Hauppauge — Bandwidth</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li><span className="font-semibold">Hauppauge, NY</span> — 1 Gbps upgrade complete and live ✅</li>
-                <li><span className="font-semibold">Roanoke, VA</span> — Awaiting Verizon provisioning ⏳</li>
+                <li>Circuit is up ✅</li>
+                <li>⚠️ Speed tests underperforming</li>
+                <li>ISP meeting on-site <span className="font-semibold">this Saturday</span> to investigate</li>
               </ul>
             </div>
             <div className="rounded-xl bg-white/10 p-4">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Video Equipment</p>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Hauppauge — Equipment</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>Neat Board Pro order placed <span className="font-semibold">May 27, 2026</span></li>
-                <li>Ordered ahead of 5% price increase on June 1</li>
-                <li>Includes systems, 65″ displays &amp; wall mounts</li>
+                <li>Neat Board Pro — arrived ✅</li>
+                <li>65″ display — arrived ✅</li>
+                <li>Wall mount — arrived ✅</li>
               </ul>
             </div>
             <div className="rounded-xl bg-white/10 p-4">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Facility Prep</p>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Roanoke — Bandwidth</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li><span className="font-semibold">Virginia</span> — Wall repaint before install</li>
-                <li><span className="font-semibold">Hauppauge</span> — Spackle, repairs &amp; wallpaper work</li>
+                <li>⏳ No update received yet</li>
+                <li>Verizon provisioning still pending</li>
               </ul>
             </div>
             <div className="rounded-xl bg-white/10 p-4">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Installation</p>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Roanoke — Equipment</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>Pro installers assigned to each site</li>
-                <li>Scheduling in progress</li>
-                <li>Final validation includes Microsoft Teams testing</li>
+                <li>Wall mount — arrived ✅</li>
+                <li>Neat Board Pro — pending ⏳</li>
+                <li>65″ display — pending ⏳</li>
               </ul>
               <div className="mt-3 border-t border-white/20 pt-3">
                 <p className="text-xs font-bold text-blue-200">Overall Readiness</p>
@@ -303,7 +316,7 @@ export default function Home() {
             {currentStatus.map((item) => {
               const t = statusToneMap[item.tone];
               return (
-                <div key={item.site} className={`rounded-2xl border-2 ${item.tone === "green" ? "border-emerald-400" : item.tone === "amber" ? "border-amber-400" : "border-blue-400"} bg-white p-5`}>
+                <div key={item.site} className={`rounded-2xl border-2 ${item.tone === "green" ? "border-emerald-400" : item.tone === "amber" ? "border-amber-400" : item.tone === "red" ? "border-red-400" : "border-blue-400"} bg-white p-5`}>
                   <div className={`mb-3 h-1.5 w-full rounded-full ${t.bar}`} />
                   <div className="flex items-center gap-2">
                     <span className="text-3xl">{item.emoji}</span>
