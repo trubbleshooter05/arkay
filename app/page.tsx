@@ -17,49 +17,50 @@ const confRoomFacilities = [
     site: "Hauppauge Facility",
     tone: "blue",
     items: [
-      "Conference room wall repairs to be completed.",
-      "Existing wall imperfections will be spackled and repaired.",
-      "Wallpaper work to be completed as needed before installation.",
-      "All equipment on-site — install holds pending bandwidth resolution and wall prep.",
+      "Per Walt/Brank: no wallpaper replacement in the conference room.",
+      "Clean swap only — remove legacy Polycom video equipment and install new Neat video equipment.",
+      "All equipment on-site — install being scheduled ASAP.",
     ],
   },
 ];
 
 const confRoomInstall = [
   "Install quote received: $2,808 for 4 technicians (4-hour minimum).",
-  "Installation not yet scheduled — awaiting Roanoke bandwidth upgrade.",
+  "Hauppauge install being scheduled ASAP — specific date and time coming soon.",
+  "Roanoke install on hold — awaiting Verizon bandwidth upgrade.",
   "Equipment will be mounted, configured, tested, and validated at both sites.",
+  "Neat staff training being coordinated for IT and Curtis — scheduled once install date is confirmed.",
   "Final testing will include Microsoft Teams meeting functionality and room device validation.",
 ];
 
 const currentStatus = [
   {
-    emoji: "🔧",
+    emoji: "✅",
     site: "Hauppauge, NY — Bandwidth",
-    headline: "New switch being installed Sat. 6/13",
-    detail: "Fusion met on-site 6/7. Speeds confirmed underperforming. Root cause: faulty network equipment. Brand new switch being swapped in Saturday 6/13 afternoon.",
-    tone: "amber",
+    headline: "Internet fixed and upgraded!",
+    detail: "Fusion replaced the faulty ISP switch. 1 Gbps circuit is now performing as expected.",
+    tone: "green",
   },
   {
-    emoji: "✅",
-    site: "Hauppauge, NY — Equipment",
-    headline: "All gear on-site",
-    detail: "Neat Board Pro, 65\" display, and wall mount all arrived. Wall prep (spackle, repairs, wallpaper) to be completed before install.",
-    tone: "green",
+    emoji: "📅",
+    site: "Hauppauge, NY — Install",
+    headline: "Install being scheduled ASAP",
+    detail: "Per Walt/Brank: clean swap only — old Polycom out, new Neat in. No wallpaper work. Specific install date and time coming soon.",
+    tone: "blue",
+  },
+  {
+    emoji: "🎓",
+    site: "Neat Training",
+    headline: "Training date in progress",
+    detail: "Coordinating a training session for IT and Curtis with Neat staff. Will be scheduled once the install date is confirmed.",
+    tone: "blue",
   },
   {
     emoji: "⏳",
     site: "Roanoke, VA — Bandwidth",
-    headline: "Verizon: design in progress",
-    detail: "Fusion escalated 6/9 — Verizon confirmed upgrade is with the provisioning team, pending design completion. Actively being escalated for quick turnaround.",
+    headline: "Awaiting Verizon — no new updates",
+    detail: "Bandwidth upgrade still pending. No new updates from Verizon since last escalation. All equipment is on-site and ready.",
     tone: "amber",
-  },
-  {
-    emoji: "📦",
-    site: "Roanoke, VA — Equipment",
-    headline: "All gear now on-site!",
-    detail: "Neat Board Pro 65\" and 65\" TV have arrived. Wall mount was already on-site. Wall repaint (per Curt) required before installation begins.",
-    tone: "green",
   },
 ];
 
@@ -67,10 +68,10 @@ const carrierTimelineNote =
   "Carrier upgrade timelines with our last-mile providers average approximately 90-120 days, although in some cases the turnaround time may be sooner.";
 
 const statusPills = [
-  { label: "Hauppauge Bandwidth", value: "New Switch Install — Sat. 6/13", tone: "amber" },
-  { label: "Roanoke Bandwidth", value: "Verizon Provisioning — Design Pending", tone: "amber" },
-  { label: "Hauppauge Equipment", value: "All On-Site ✓", tone: "green" },
-  { label: "Roanoke Equipment", value: "All On-Site ✓", tone: "green" },
+  { label: "Hauppauge Bandwidth", value: "Fixed & Upgraded ✓", tone: "green" },
+  { label: "Hauppauge Install", value: "Scheduling ASAP", tone: "blue" },
+  { label: "Roanoke Bandwidth", value: "Awaiting Verizon — No Update", tone: "amber" },
+  { label: "Neat Training", value: "Coordinating with Neat Staff", tone: "blue" },
   { label: "Install Quote", value: "$2,808 — 4 Techs / 4-Hr Min", tone: "blue" },
 ];
 
@@ -103,10 +104,10 @@ const sites = [
     address: "350 East Park Dr, Roanoke, VA 24019",
     statusLabel: "Equipment On-Site",
     statusTone: "green",
-    note: "6/9: Fusion escalated to Verizon — upgrade with provisioning team, pending design completion. All equipment on-site. Wall repaint required (per Curt) before install. Install not yet scheduled — awaiting bandwidth first.",
+    note: "No new bandwidth updates — still awaiting Verizon. All equipment on-site. Wall repaint required (per Curt) before install. Install not yet scheduled — awaiting bandwidth upgrade.",
     details: [
-      ["Bandwidth", "Upgrade pending — Verizon design in progress ⏳"],
-      ["Verizon Update (6/9)", "Provisioning team — design completion pending"],
+      ["Bandwidth", "Upgrade pending — awaiting Verizon ⏳"],
+      ["Verizon Update", "No new updates since last escalation"],
       ["DIA", "1 Gb — Pending"],
       ["E-LAN", "1 Gb — Pending"],
       ["Backup Circuit", "Included"],
@@ -119,20 +120,20 @@ const sites = [
   {
     city: "Hauppauge, NY",
     address: "700 Veterans Hwy, Suite 300, Hauppauge, NY 11788",
-    statusLabel: "Switch Replacement 6/13",
-    statusTone: "amber",
-    note: "6/7: Fusion met on-site. Speeds confirmed underperforming — faulty network equipment identified. Brand new switch being installed Sat. 6/13 afternoon. Speed tests will be re-run post-swap to confirm 1 Gbps.",
+    statusLabel: "Bandwidth Fixed",
+    statusTone: "green",
+    note: "ISP switch replaced — internet fixed and upgraded to 1 Gbps. Per Walt/Brank: clean Polycom-to-Neat swap only, no wallpaper work. Install being scheduled ASAP — date/time coming soon. Neat training for IT and Curtis being coordinated.",
     details: [
-      ["Bandwidth", "Circuit up — new switch install Sat. 6/13 ⚠️"],
-      ["ISP Action (6/7)", "Fusion replacing faulty switch on 6/13 afternoon"],
-      ["Speed Verify", "Re-test after swap to confirm 1 Gbps performance"],
+      ["Bandwidth", "1 Gbps — fixed and upgraded ✓"],
+      ["ISP Action", "Faulty switch replaced by Fusion"],
       ["DIA", "1 Gb"],
       ["E-LAN", "1 Gb"],
       ["Backup Circuit", "Included"],
       ["Managed Router", "Included"],
       ["Equipment", "Neat Board Pro, 65\" display, wall mount — all on-site ✓"],
-      ["Wall Prep", "Spackle, repairs & wallpaper work before install"],
-      ["Install", "Not yet scheduled — pending bandwidth resolution"],
+      ["Room Plan", "Clean swap — Polycom out, Neat in (no wallpaper per Walt/Brank)"],
+      ["Install", "Being scheduled ASAP — date/time coming soon"],
+      ["Training", "Neat staff training for IT + Curtis — pending install date"],
     ],
   },
 ];
@@ -143,11 +144,12 @@ const timeline = [
   { label: "Site access and scheduling coordination", state: "complete" },
   { label: "Equipment ordered — Neat Board Pro, displays, wall mounts (5/27)", state: "complete" },
   { label: "All equipment on-site at both locations ✓", state: "complete" },
-  { label: "Hauppauge: Fusion on-site 6/7 — faulty switch identified, replacement scheduled 6/13", state: "active" },
-  { label: "Roanoke: Verizon provisioning in progress — design pending (escalated 6/9)", state: "active" },
-  { label: "Install quote received — $2,808 for 4 techs / 4-hr min", state: "active" },
-  { label: "Wall prep at both sites (repaint Roanoke, spackle/repairs Hauppauge)", state: "active" },
-  { label: "Schedule install — pending bandwidth resolution at both sites", state: "upcoming" },
+  { label: "Hauppauge: ISP switch replaced — bandwidth fixed and upgraded ✓", state: "complete" },
+  { label: "Roanoke: awaiting Verizon bandwidth upgrade — no new updates", state: "active" },
+  { label: "Install quote received — $2,808 for 4 techs / 4-hr min", state: "complete" },
+  { label: "Hauppauge install being scheduled ASAP — date/time coming soon", state: "active" },
+  { label: "Neat training for IT + Curtis — coordinating with Neat staff", state: "active" },
+  { label: "Wall prep — Roanoke repaint pending; Hauppauge clean swap only (no wallpaper)", state: "active" },
   { label: "Install / cutover — both sites", state: "upcoming" },
   { label: "Validation and user testing (incl. Microsoft Teams)", state: "upcoming" },
   { label: "Completed", state: "upcoming" },
@@ -182,12 +184,13 @@ const projectDetails = [
   ["Backup", "Diverse Business Class Backup Circuit"],
   ["Router", "Managed Router included"],
   ["Sites", "Roanoke VA and Hauppauge NY"],
-  ["Hauppauge Bandwidth", "Circuit up — faulty switch being replaced Sat. 6/13 by Fusion"],
-  ["Hauppauge Equipment", "Neat Board Pro, 65\" display, wall mount — all on-site ✓"],
-  ["Roanoke Bandwidth", "Verizon provisioning — design pending (Fusion escalated 6/9)"],
+  ["Hauppauge Bandwidth", "Fixed and upgraded — ISP switch replaced ✓"],
+  ["Hauppauge Install", "Being scheduled ASAP — date/time coming soon"],
+  ["Hauppauge Room Plan", "Clean Polycom-to-Neat swap only — no wallpaper (per Walt/Brank)"],
+  ["Roanoke Bandwidth", "Awaiting Verizon — no new updates"],
   ["Roanoke Equipment", "Neat Board Pro 65\", 65\" TV, wall mount — all on-site ✓"],
-  ["Install Quote", "$2,808 — 4 techs, 4-hour minimum — not yet scheduled"],
-  ["Install Hold", "Awaiting Roanoke bandwidth upgrade before scheduling"],
+  ["Install Quote", "$2,808 — 4 techs, 4-hour minimum"],
+  ["Neat Training", "Coordinating with Neat staff for IT + Curtis — pending install date"],
   ["Video Upgrade", "Polycom Group Series 500 to Neat Board Pro 65 inch"],
   ["Video Equipment", "Neat Board Pro ordered May 27, 2026 (ahead of 6/1 price increase)"],
   ["Displays", "Samsung BE65FX-H 65 inch 4K"],
@@ -204,11 +207,12 @@ const benefits = [
 ];
 
 const nextSteps = [
-  "Confirm install schedule",
+  "Confirm Hauppauge install date and time (scheduling ASAP)",
+  "Schedule Neat staff training for IT and Curtis once install date is set",
   "Confirm site access windows for both locations",
   "Confirm final display mounting height",
   "Confirm Neat Board Pro installation location",
-  "Test 1 Gbps circuit performance",
+  "Test 1 Gbps circuit performance at Roanoke once bandwidth is live",
   "Test conferencing audio, camera, screen sharing",
   "Document final network and AV setup",
 ];
@@ -289,42 +293,43 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-200">Project Update</p>
-            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-white">June 12, 2026</span>
+            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-white">June 13, 2026</span>
           </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-xl bg-white/10 p-4">
               <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Hauppauge — Bandwidth</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>⚠️ Speeds underperforming — root cause found</li>
-                <li>Fusion on-site 6/7: faulty switch identified</li>
-                <li><span className="font-semibold">New switch install: Sat. 6/13 afternoon</span></li>
+                <li>✅ Internet fixed and upgraded</li>
+                <li>ISP switch replaced by Fusion</li>
+                <li>1 Gbps performing as expected</li>
               </ul>
             </div>
             <div className="rounded-xl bg-white/10 p-4">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Roanoke — Bandwidth</p>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Hauppauge — Install</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>⏳ Verizon: design completion pending</li>
-                <li>Fusion escalated 6/9 for quick turnaround</li>
+                <li>📅 Being scheduled ASAP</li>
+                <li>Clean Polycom → Neat swap (no wallpaper)</li>
+                <li>Specific date/time coming soon</li>
               </ul>
             </div>
             <div className="rounded-xl bg-white/10 p-4">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Equipment — Both Sites</p>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Training &amp; Roanoke</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>Hauppauge: Neat Board Pro, 65″ TV, wall mount ✅</li>
-                <li>Roanoke: Neat Board Pro 65″, 65″ TV, wall mount ✅</li>
-                <li>All gear on-site at both locations</li>
+                <li>🎓 Neat training for IT + Curtis in progress</li>
+                <li>⏳ Roanoke bandwidth — awaiting Verizon</li>
+                <li>No new updates from Verizon</li>
               </ul>
             </div>
             <div className="rounded-xl bg-white/10 p-4">
               <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Installation</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>Quote received: <span className="font-semibold">$2,808</span></li>
-                <li>4 techs / 4-hr min</li>
-                <li>Not yet scheduled — awaiting bandwidth</li>
+                <li>Quote: <span className="font-semibold">$2,808</span> — 4 techs / 4-hr min</li>
+                <li>Hauppauge: scheduling now</li>
+                <li>Roanoke: on hold pending bandwidth</li>
               </ul>
               <div className="mt-3 border-t border-white/20 pt-3">
                 <p className="text-xs font-bold text-blue-200">Overall Readiness</p>
-                <p className="text-2xl font-bold text-white">68%</p>
+                <p className="text-2xl font-bold text-white">75%</p>
               </div>
             </div>
           </div>
@@ -386,16 +391,16 @@ export default function Home() {
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <span className="text-sm font-medium text-slate-300">Current Phase</span>
                 <span className="rounded-full bg-amber-400/15 px-3 py-1 text-xs font-bold text-amber-200">
-                  Hauppauge Live · Roanoke Pending
+                  Hauppauge Fixed · Install Scheduling
                 </span>
               </div>
               <div className="mt-5">
                 <div className="flex items-end justify-between">
-                  <span className="text-4xl font-semibold">68%</span>
+                  <span className="text-4xl font-semibold">75%</span>
                   <span className="text-sm text-slate-300">overall readiness</span>
                 </div>
                 <div className="mt-4 h-3 rounded-full bg-white/10">
-                  <div className="h-3 w-[68%] rounded-full bg-blue-400" />
+                  <div className="h-3 w-[75%] rounded-full bg-blue-400" />
                 </div>
               </div>
               <p className="mt-5 text-sm leading-6 text-slate-300">{carrierTimelineNote}</p>
