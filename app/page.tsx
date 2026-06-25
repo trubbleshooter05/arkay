@@ -1,7 +1,7 @@
 const confRoomEquipment = [
   "Neat video conferencing systems for each location",
   "65-inch conference room displays",
-  "Wall mounts for all displays",
+  "Wall mounts for all displays — Neat Board Pro mounts being replaced with correct 115 lb-rated units",
 ];
 
 const confRoomFacilities = [
@@ -17,18 +17,18 @@ const confRoomFacilities = [
     site: "Hauppauge Facility",
     tone: "blue",
     items: [
-      "Per Walt/Brank: no wallpaper replacement in the conference room.",
-      "Clean swap only — remove legacy Polycom video equipment and install new Neat video equipment.",
-      "All equipment on-site — install being scheduled ASAP.",
+      "Brian and Walt are wallpapering the entire Hauppauge conference room.",
+      "IT is coordinating install timing so Neat equipment goes in after wallpaper work is complete.",
+      "Neat Board Pro wall mounts being replaced with correct mounts rated for up to 115 lbs.",
     ],
   },
 ];
 
 const confRoomInstall = [
   "Install quote received: $2,808 for 4 technicians (4-hour minimum).",
-  "Hauppauge install being scheduled ASAP — specific date and time coming soon.",
-  "Roanoke install on hold — awaiting Verizon bandwidth upgrade.",
-  "Equipment will be mounted, configured, tested, and validated at both sites.",
+  "Hauppauge: coordinating Neat install timing with Brian/Walt wallpaper completion.",
+  "Neat Board Pro wall mounts being replaced with correct 115 lb-rated mounts before install.",
+  "Roanoke install on hold — awaiting Verizon on-site bandwidth upgrade.",
   "Neat staff training being coordinated for IT and Curtis — scheduled once install date is confirmed.",
   "Final testing will include Microsoft Teams meeting functionality and room device validation.",
 ];
@@ -37,30 +37,30 @@ const currentStatus = [
   {
     emoji: "✅",
     site: "Hauppauge, NY — Bandwidth",
-    headline: "Internet fixed and upgraded!",
-    detail: "Fusion replaced the faulty ISP switch. 1 Gbps circuit is now performing as expected.",
+    headline: "Fully upgraded to Gigabit!",
+    detail: "1 Gbps is live and performing. Steve Viola reports much faster VPN speeds working from home.",
     tone: "green",
   },
   {
-    emoji: "📅",
-    site: "Hauppauge, NY — Install",
-    headline: "Install being scheduled ASAP",
-    detail: "Per Walt/Brank: clean swap only — old Polycom out, new Neat in. No wallpaper work. Specific install date and time coming soon.",
+    emoji: "🏗️",
+    site: "Hauppauge, NY — Conf Room",
+    headline: "Wallpaper + install timing",
+    detail: "Brian and Walt are wallpapering the entire conference room. IT is coordinating Neat equipment install timing. Wall mounts being swapped for correct 115 lb-rated units.",
     tone: "blue",
+  },
+  {
+    emoji: "📡",
+    site: "Roanoke, VA — Bandwidth",
+    headline: "Verizon design validated",
+    detail: "Fusion confirmed Verizon validated the design. On-site upgrade required — primary transport goes down (backup available). Sundays ideal per Curtis (plant runs 24/6). Fusion escalating for timeline.",
+    tone: "amber",
   },
   {
     emoji: "🎓",
     site: "Neat Training",
     headline: "Training date in progress",
-    detail: "Coordinating a training session for IT and Curtis with Neat staff. Will be scheduled once the install date is confirmed.",
+    detail: "Coordinating a training session for IT and Curtis with Neat staff. Will be scheduled once the Hauppauge install date is confirmed.",
     tone: "blue",
-  },
-  {
-    emoji: "⏳",
-    site: "Roanoke, VA — Bandwidth",
-    headline: "Awaiting Verizon — no new updates",
-    detail: "Bandwidth upgrade still pending. No new updates from Verizon since last escalation. All equipment is on-site and ready.",
-    tone: "amber",
   },
 ];
 
@@ -68,11 +68,11 @@ const carrierTimelineNote =
   "Carrier upgrade timelines with our last-mile providers average approximately 90-120 days, although in some cases the turnaround time may be sooner.";
 
 const statusPills = [
-  { label: "Hauppauge Bandwidth", value: "Fixed & Upgraded ✓", tone: "green" },
-  { label: "Hauppauge Install", value: "Scheduling ASAP", tone: "blue" },
-  { label: "Roanoke Bandwidth", value: "Awaiting Verizon — No Update", tone: "amber" },
+  { label: "Hauppauge Bandwidth", value: "Gigabit Live ✓", tone: "green" },
+  { label: "Hauppauge Conf Room", value: "Wallpaper In Progress", tone: "blue" },
+  { label: "Roanoke Bandwidth", value: "Verizon Design Validated", tone: "amber" },
+  { label: "Wall Mounts", value: "Replacing w/ 115 lb Units", tone: "blue" },
   { label: "Neat Training", value: "Coordinating with Neat Staff", tone: "blue" },
-  { label: "Install Quote", value: "$2,808 — 4 Techs / 4-Hr Min", tone: "blue" },
 ];
 
 const videoEquipNotice =
@@ -104,13 +104,14 @@ const sites = [
     address: "350 East Park Dr, Roanoke, VA 24019",
     statusLabel: "Equipment On-Site",
     statusTone: "green",
-    note: "No new bandwidth updates — still awaiting Verizon. All equipment on-site. Wall repaint required (per Curt) before install. Install not yet scheduled — awaiting bandwidth upgrade.",
+    note: "Verizon validated the design (Fusion update). No definitive timeline yet — Fusion continuing to escalate. Verizon must come on-site; primary transport goes down during upgrade (backup circuit available). Curtis confirmed plant runs 24/6 — Sundays completely free and ideal for the cutover; can operate on backup if Sunday is not possible.",
     details: [
-      ["Bandwidth", "Upgrade pending — awaiting Verizon ⏳"],
-      ["Verizon Update", "No new updates since last escalation"],
+      ["Bandwidth", "Upgrade pending — Verizon design validated ✓"],
+      ["Fusion Update", "Verizon validated design; on-site visit required — timeline TBD"],
+      ["Site Window", "Sundays preferred (per Curtis) — plant runs 24/6, backup available"],
       ["DIA", "1 Gb — Pending"],
       ["E-LAN", "1 Gb — Pending"],
-      ["Backup Circuit", "Included"],
+      ["Backup Circuit", "Included — available during primary cutover"],
       ["Managed Router", "Included"],
       ["Equipment", "Neat Board Pro 65\", 65\" TV, wall mount — all on-site ✓"],
       ["Wall Prep", "Repaint required before install (per Curt)"],
@@ -120,19 +121,20 @@ const sites = [
   {
     city: "Hauppauge, NY",
     address: "700 Veterans Hwy, Suite 300, Hauppauge, NY 11788",
-    statusLabel: "Bandwidth Fixed",
-    statusTone: "green",
-    note: "ISP switch replaced — internet fixed and upgraded to 1 Gbps. Per Walt/Brank: clean Polycom-to-Neat swap only, no wallpaper work. Install being scheduled ASAP — date/time coming soon. Neat training for IT and Curtis being coordinated.",
+    statusLabel: "Wallpaper In Progress",
+    statusTone: "blue",
+    note: "Bandwidth fully upgraded to Gigabit — Steve Viola reports much faster VPN from home. Brian and Walt are wallpapering the entire conference room. IT coordinating Neat install timing after wallpaper completes. Neat Board Pro wall mounts being replaced with correct 115 lb-rated units.",
     details: [
-      ["Bandwidth", "1 Gbps — fixed and upgraded ✓"],
-      ["ISP Action", "Faulty switch replaced by Fusion"],
+      ["Bandwidth", "1 Gbps — fully upgraded and live ✓"],
+      ["User Feedback", "Steve Viola — faster VPN speeds from home"],
       ["DIA", "1 Gb"],
       ["E-LAN", "1 Gb"],
       ["Backup Circuit", "Included"],
       ["Managed Router", "Included"],
       ["Equipment", "Neat Board Pro, 65\" display, wall mount — all on-site ✓"],
-      ["Room Plan", "Clean swap — Polycom out, Neat in (no wallpaper per Walt/Brank)"],
-      ["Install", "Being scheduled ASAP — date/time coming soon"],
+      ["Wall Mounts", "Being replaced with correct 115 lb-rated mounts"],
+      ["Room Prep", "Brian/Walt wallpapering entire conf room — in progress"],
+      ["Install", "Coordinating timing with wallpaper completion"],
       ["Training", "Neat staff training for IT + Curtis — pending install date"],
     ],
   },
@@ -144,12 +146,12 @@ const timeline = [
   { label: "Site access and scheduling coordination", state: "complete" },
   { label: "Equipment ordered — Neat Board Pro, displays, wall mounts (5/27)", state: "complete" },
   { label: "All equipment on-site at both locations ✓", state: "complete" },
-  { label: "Hauppauge: ISP switch replaced — bandwidth fixed and upgraded ✓", state: "complete" },
-  { label: "Roanoke: awaiting Verizon bandwidth upgrade — no new updates", state: "active" },
-  { label: "Install quote received — $2,808 for 4 techs / 4-hr min", state: "complete" },
-  { label: "Hauppauge install being scheduled ASAP — date/time coming soon", state: "active" },
+  { label: "Hauppauge: fully upgraded to Gigabit — VPN performance improved ✓", state: "complete" },
+  { label: "Roanoke: Verizon validated design — on-site upgrade scheduling (Sundays preferred)", state: "active" },
+  { label: "Hauppauge: Brian/Walt wallpapering conf room — coordinating Neat install timing", state: "active" },
+  { label: "Neat Board Pro wall mounts being replaced with 115 lb-rated units", state: "active" },
   { label: "Neat training for IT + Curtis — coordinating with Neat staff", state: "active" },
-  { label: "Wall prep — Roanoke repaint pending; Hauppauge clean swap only (no wallpaper)", state: "active" },
+  { label: "Wall prep — Roanoke repaint pending before install", state: "active" },
   { label: "Install / cutover — both sites", state: "upcoming" },
   { label: "Validation and user testing (incl. Microsoft Teams)", state: "upcoming" },
   { label: "Completed", state: "upcoming" },
@@ -184,10 +186,11 @@ const projectDetails = [
   ["Backup", "Diverse Business Class Backup Circuit"],
   ["Router", "Managed Router included"],
   ["Sites", "Roanoke VA and Hauppauge NY"],
-  ["Hauppauge Bandwidth", "Fixed and upgraded — ISP switch replaced ✓"],
-  ["Hauppauge Install", "Being scheduled ASAP — date/time coming soon"],
-  ["Hauppauge Room Plan", "Clean Polycom-to-Neat swap only — no wallpaper (per Walt/Brank)"],
-  ["Roanoke Bandwidth", "Awaiting Verizon — no new updates"],
+  ["Hauppauge Bandwidth", "Fully upgraded to Gigabit — Steve Viola reporting faster VPN from home ✓"],
+  ["Hauppauge Conf Room", "Brian/Walt wallpapering entire room — IT coordinating Neat install timing"],
+  ["Wall Mounts", "Neat Board Pro mounts being replaced with correct 115 lb-rated units"],
+  ["Roanoke Bandwidth", "Verizon validated design — on-site upgrade needed, Sundays preferred (Curtis)"],
+  ["Roanoke Site Window", "Plant runs 24/6 — Sundays free; backup transport available during cutover"],
   ["Roanoke Equipment", "Neat Board Pro 65\", 65\" TV, wall mount — all on-site ✓"],
   ["Install Quote", "$2,808 — 4 techs, 4-hour minimum"],
   ["Neat Training", "Coordinating with Neat staff for IT + Curtis — pending install date"],
@@ -207,12 +210,12 @@ const benefits = [
 ];
 
 const nextSteps = [
-  "Confirm Hauppauge install date and time (scheduling ASAP)",
+  "Confirm Roanoke on-site upgrade window with Fusion — Sundays preferred (per Curtis)",
+  "Coordinate Hauppauge Neat install timing with Brian/Walt wallpaper completion",
+  "Complete Neat Board Pro wall mount swap to 115 lb-rated units",
   "Schedule Neat staff training for IT and Curtis once install date is set",
   "Confirm site access windows for both locations",
-  "Confirm final display mounting height",
-  "Confirm Neat Board Pro installation location",
-  "Test 1 Gbps circuit performance at Roanoke once bandwidth is live",
+  "Run speed tests at Roanoke once Verizon on-site upgrade is complete",
   "Test conferencing audio, camera, screen sharing",
   "Document final network and AV setup",
 ];
@@ -293,43 +296,42 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-200">Project Update</p>
-            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-white">June 13, 2026</span>
+            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-white">June 18, 2026</span>
           </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-xl bg-white/10 p-4">
               <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Hauppauge — Bandwidth</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>✅ Internet fixed and upgraded</li>
-                <li>ISP switch replaced by Fusion</li>
-                <li>1 Gbps performing as expected</li>
+                <li>✅ Fully upgraded to Gigabit</li>
+                <li>Steve Viola — faster VPN from home</li>
               </ul>
             </div>
             <div className="rounded-xl bg-white/10 p-4">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Hauppauge — Install</p>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Hauppauge — Conf Room</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>📅 Being scheduled ASAP</li>
-                <li>Clean Polycom → Neat swap (no wallpaper)</li>
-                <li>Specific date/time coming soon</li>
+                <li>🏗️ Brian/Walt wallpapering entire room</li>
+                <li>Coordinating Neat install timing</li>
+                <li>Wall mounts → 115 lb-rated units</li>
               </ul>
             </div>
             <div className="rounded-xl bg-white/10 p-4">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Training &amp; Roanoke</p>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Roanoke — Bandwidth</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>🎓 Neat training for IT + Curtis in progress</li>
-                <li>⏳ Roanoke bandwidth — awaiting Verizon</li>
-                <li>No new updates from Verizon</li>
+                <li>✓ Verizon validated design</li>
+                <li>On-site upgrade needed — timeline TBD</li>
+                <li>Sundays preferred (Curtis — plant 24/6)</li>
               </ul>
             </div>
             <div className="rounded-xl bg-white/10 p-4">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Installation</p>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Next Up</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>Quote: <span className="font-semibold">$2,808</span> — 4 techs / 4-hr min</li>
-                <li>Hauppauge: scheduling now</li>
-                <li>Roanoke: on hold pending bandwidth</li>
+                <li>Confirm Roanoke site window w/ Fusion</li>
+                <li>🎓 Neat training — pending install date</li>
+                <li>Install quote: <span className="font-semibold">$2,808</span></li>
               </ul>
               <div className="mt-3 border-t border-white/20 pt-3">
                 <p className="text-xs font-bold text-blue-200">Overall Readiness</p>
-                <p className="text-2xl font-bold text-white">75%</p>
+                <p className="text-2xl font-bold text-white">78%</p>
               </div>
             </div>
           </div>
@@ -391,16 +393,16 @@ export default function Home() {
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <span className="text-sm font-medium text-slate-300">Current Phase</span>
                 <span className="rounded-full bg-amber-400/15 px-3 py-1 text-xs font-bold text-amber-200">
-                  Hauppauge Fixed · Install Scheduling
+                  Gigabit Live · Wallpaper · Roanoke Scheduling
                 </span>
               </div>
               <div className="mt-5">
                 <div className="flex items-end justify-between">
-                  <span className="text-4xl font-semibold">75%</span>
+                  <span className="text-4xl font-semibold">78%</span>
                   <span className="text-sm text-slate-300">overall readiness</span>
                 </div>
                 <div className="mt-4 h-3 rounded-full bg-white/10">
-                  <div className="h-3 w-[75%] rounded-full bg-blue-400" />
+                  <div className="h-3 w-[78%] rounded-full bg-blue-400" />
                 </div>
               </div>
               <p className="mt-5 text-sm leading-6 text-slate-300">{carrierTimelineNote}</p>
