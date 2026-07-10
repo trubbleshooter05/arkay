@@ -17,8 +17,8 @@ const confRoomFacilities = [
     site: "Hauppauge Facility",
     tone: "blue",
     items: [
-      "Brian and Walt are wallpapering the entire Hauppauge conference room.",
-      "IT is coordinating install timing so Neat equipment goes in after wallpaper work is complete.",
+      "Neat equipment cannot be installed until Hauppauge conference room wallpaper is complete.",
+      "Awaiting confirmed wallpaper install date from Brian/Walt.",
       "Neat Board Pro wall mounts being replaced with correct mounts rated for up to 115 lbs.",
     ],
   },
@@ -26,12 +26,25 @@ const confRoomFacilities = [
 
 const confRoomInstall = [
   "Install quote received: $2,808 for 4 technicians (4-hour minimum).",
-  "Hauppauge: coordinating Neat install timing with Brian/Walt wallpaper completion.",
-  "Neat Board Pro wall mounts being replaced with correct 115 lb-rated mounts before install.",
-  "Roanoke install on hold — awaiting Verizon on-site bandwidth upgrade.",
+  "Hauppauge Neat install on hold — cannot proceed until wallpaper is complete.",
+  "Awaiting wallpaper install date before scheduling Neat equipment installation.",
+  "Roanoke install on hold — awaiting bandwidth upgrade (Fusion site survey in progress).",
   "Neat staff training being coordinated for IT and Curtis — scheduled once install date is confirmed.",
   "Final testing will include Microsoft Teams meeting functionality and room device validation.",
 ];
+
+const warehouse = {
+  site: "Roanoke Warehouse (ROC)",
+  statusLabel: "Switch On-Site",
+  statusTone: "blue",
+  note: "Network switch has arrived. Awaiting access points. Once APs arrive, IT will provision them and then schedule RCI to come install.",
+  details: [
+    ["Switch", "Arrived on-site ✓"],
+    ["Access Points", "Awaiting delivery ⏳"],
+    ["Next Step", "Provision APs once received"],
+    ["Install", "Schedule RCI after provisioning"],
+  ],
+};
 
 const currentStatus = [
   {
@@ -42,18 +55,25 @@ const currentStatus = [
     tone: "green",
   },
   {
-    emoji: "🏗️",
-    site: "Hauppauge, NY — Conf Room",
-    headline: "Wallpaper + install timing",
-    detail: "Brian and Walt are wallpapering the entire conference room. IT is coordinating Neat equipment install timing. Wall mounts being swapped for correct 115 lb-rated units.",
-    tone: "blue",
+    emoji: "⏳",
+    site: "Hauppauge, NY — Neat Install",
+    headline: "On hold — awaiting wallpaper",
+    detail: "Neat equipment cannot be installed until Hauppauge conference room wallpaper is complete. Awaiting confirmed wallpaper install date.",
+    tone: "amber",
   },
   {
-    emoji: "📡",
+    emoji: "🔍",
     site: "Roanoke, VA — Bandwidth",
-    headline: "Verizon design validated",
-    detail: "Fusion confirmed Verizon validated the design. On-site upgrade required — primary transport goes down (backup available). Sundays ideal per Curtis (plant runs 24/6). Fusion escalating for timeline.",
+    headline: "Site survey in progress",
+    detail: "Fusion sent a tech to Roanoke on 7/7 for site survey and inventory of existing ISP equipment. Work in progress — waiting on external vendor.",
     tone: "amber",
+  },
+  {
+    emoji: "📦",
+    site: "Roanoke Warehouse",
+    headline: "Switch arrived — awaiting APs",
+    detail: "Network switch is on-site. Access points still pending. Once APs arrive, IT will provision them and schedule RCI to install.",
+    tone: "blue",
   },
   {
     emoji: "🎓",
@@ -69,9 +89,9 @@ const carrierTimelineNote =
 
 const statusPills = [
   { label: "Hauppauge Bandwidth", value: "Gigabit Live ✓", tone: "green" },
-  { label: "Hauppauge Conf Room", value: "Wallpaper In Progress", tone: "blue" },
-  { label: "Roanoke Bandwidth", value: "Verizon Design Validated", tone: "amber" },
-  { label: "Wall Mounts", value: "Replacing w/ 115 lb Units", tone: "blue" },
+  { label: "Hauppauge Neat", value: "On Hold — Awaiting Wallpaper", tone: "amber" },
+  { label: "Roanoke Bandwidth", value: "Site Survey 7/7 — Vendor Pending", tone: "amber" },
+  { label: "Warehouse", value: "Switch Arrived · APs Pending", tone: "blue" },
   { label: "Neat Training", value: "Coordinating with Neat Staff", tone: "blue" },
 ];
 
@@ -102,12 +122,13 @@ const sites = [
   {
     city: "Roanoke, VA",
     address: "350 East Park Dr, Roanoke, VA 24019",
-    statusLabel: "Equipment On-Site",
-    statusTone: "green",
-    note: "Verizon validated the design (Fusion update). No definitive timeline yet — Fusion continuing to escalate. Verizon must come on-site; primary transport goes down during upgrade (backup circuit available). Curtis confirmed plant runs 24/6 — Sundays completely free and ideal for the cutover; can operate on backup if Sunday is not possible.",
+    statusLabel: "Site Survey Done",
+    statusTone: "amber",
+    note: "Fusion sent a tech to Roanoke on 7/7 for site survey and inventory of existing ISP equipment. Work in progress — waiting on external vendor. All Neat equipment on-site. Install not yet scheduled — awaiting bandwidth upgrade.",
     details: [
-      ["Bandwidth", "Upgrade pending — Verizon design validated ✓"],
-      ["Fusion Update", "Verizon validated design; on-site visit required — timeline TBD"],
+      ["Bandwidth", "Upgrade in progress — site survey completed 7/7 ⏳"],
+      ["Fusion Update (7/7)", "Tech on-site for survey + ISP equipment inventory"],
+      ["Status", "Waiting on external vendor"],
       ["Site Window", "Sundays preferred (per Curtis) — plant runs 24/6, backup available"],
       ["DIA", "1 Gb — Pending"],
       ["E-LAN", "1 Gb — Pending"],
@@ -121,9 +142,9 @@ const sites = [
   {
     city: "Hauppauge, NY",
     address: "700 Veterans Hwy, Suite 300, Hauppauge, NY 11788",
-    statusLabel: "Wallpaper In Progress",
-    statusTone: "blue",
-    note: "Bandwidth fully upgraded to Gigabit — Steve Viola reports much faster VPN from home. Brian and Walt are wallpapering the entire conference room. IT coordinating Neat install timing after wallpaper completes. Neat Board Pro wall mounts being replaced with correct 115 lb-rated units.",
+    statusLabel: "Neat On Hold",
+    statusTone: "amber",
+    note: "Bandwidth fully upgraded to Gigabit. Neat equipment cannot be installed until Hauppauge conference room wallpaper is complete — awaiting wallpaper install date from Brian/Walt.",
     details: [
       ["Bandwidth", "1 Gbps — fully upgraded and live ✓"],
       ["User Feedback", "Steve Viola — faster VPN speeds from home"],
@@ -133,8 +154,8 @@ const sites = [
       ["Managed Router", "Included"],
       ["Equipment", "Neat Board Pro, 65\" display, wall mount — all on-site ✓"],
       ["Wall Mounts", "Being replaced with correct 115 lb-rated mounts"],
-      ["Room Prep", "Brian/Walt wallpapering entire conf room — in progress"],
-      ["Install", "Coordinating timing with wallpaper completion"],
+      ["Wallpaper", "Awaiting install date — Neat install blocked until complete"],
+      ["Neat Install", "On hold pending wallpaper completion"],
       ["Training", "Neat staff training for IT + Curtis — pending install date"],
     ],
   },
@@ -147,9 +168,9 @@ const timeline = [
   { label: "Equipment ordered — Neat Board Pro, displays, wall mounts (5/27)", state: "complete" },
   { label: "All equipment on-site at both locations ✓", state: "complete" },
   { label: "Hauppauge: fully upgraded to Gigabit — VPN performance improved ✓", state: "complete" },
-  { label: "Roanoke: Verizon validated design — on-site upgrade scheduling (Sundays preferred)", state: "active" },
-  { label: "Hauppauge: Brian/Walt wallpapering conf room — coordinating Neat install timing", state: "active" },
-  { label: "Neat Board Pro wall mounts being replaced with 115 lb-rated units", state: "active" },
+  { label: "Roanoke: Fusion site survey 7/7 — ISP inventory complete, awaiting external vendor", state: "active" },
+  { label: "Warehouse: switch arrived — awaiting APs, then provision + RCI install", state: "active" },
+  { label: "Hauppauge: Neat install on hold — awaiting wallpaper install date", state: "active" },
   { label: "Neat training for IT + Curtis — coordinating with Neat staff", state: "active" },
   { label: "Wall prep — Roanoke repaint pending before install", state: "active" },
   { label: "Install / cutover — both sites", state: "upcoming" },
@@ -187,10 +208,9 @@ const projectDetails = [
   ["Router", "Managed Router included"],
   ["Sites", "Roanoke VA and Hauppauge NY"],
   ["Hauppauge Bandwidth", "Fully upgraded to Gigabit — Steve Viola reporting faster VPN from home ✓"],
-  ["Hauppauge Conf Room", "Brian/Walt wallpapering entire room — IT coordinating Neat install timing"],
-  ["Wall Mounts", "Neat Board Pro mounts being replaced with correct 115 lb-rated units"],
-  ["Roanoke Bandwidth", "Verizon validated design — on-site upgrade needed, Sundays preferred (Curtis)"],
-  ["Roanoke Site Window", "Plant runs 24/6 — Sundays free; backup transport available during cutover"],
+  ["Hauppauge Neat Install", "On hold — cannot install until wallpaper complete; awaiting date"],
+  ["Roanoke Bandwidth", "Fusion site survey 7/7 — ISP equipment inventory; waiting on external vendor"],
+  ["Roanoke Warehouse", "Switch arrived — awaiting APs, then provision and schedule RCI install"],
   ["Roanoke Equipment", "Neat Board Pro 65\", 65\" TV, wall mount — all on-site ✓"],
   ["Install Quote", "$2,808 — 4 techs, 4-hour minimum"],
   ["Neat Training", "Coordinating with Neat staff for IT + Curtis — pending install date"],
@@ -210,12 +230,12 @@ const benefits = [
 ];
 
 const nextSteps = [
-  "Confirm Roanoke on-site upgrade window with Fusion — Sundays preferred (per Curtis)",
-  "Coordinate Hauppauge Neat install timing with Brian/Walt wallpaper completion",
-  "Complete Neat Board Pro wall mount swap to 115 lb-rated units",
+  "Confirm Hauppauge wallpaper install date (blocks Neat equipment install)",
+  "Follow up with Fusion on Roanoke external vendor timeline",
+  "Provision warehouse access points once delivered, then schedule RCI install",
   "Schedule Neat staff training for IT and Curtis once install date is set",
-  "Confirm site access windows for both locations",
-  "Run speed tests at Roanoke once Verizon on-site upgrade is complete",
+  "Confirm Roanoke on-site upgrade window — Sundays preferred (per Curtis)",
+  "Run speed tests at Roanoke once bandwidth upgrade is complete",
   "Test conferencing audio, camera, screen sharing",
   "Document final network and AV setup",
 ];
@@ -296,42 +316,43 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-200">Project Update</p>
-            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-white">June 25, 2026</span>
+            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-white">July 10, 2026</span>
           </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-xl bg-white/10 p-4">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Hauppauge — Bandwidth</p>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Hauppauge — Neat Install</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>✅ Fully upgraded to Gigabit</li>
-                <li>Steve Viola — faster VPN from home</li>
-              </ul>
-            </div>
-            <div className="rounded-xl bg-white/10 p-4">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Hauppauge — Conf Room</p>
-              <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>🏗️ Brian/Walt wallpapering entire room</li>
-                <li>Coordinating Neat install timing</li>
-                <li>Wall mounts → 115 lb-rated units</li>
+                <li>⏳ On hold — awaiting wallpaper</li>
+                <li>Neat cannot install until wallpaper done</li>
+                <li>Awaiting wallpaper install date</li>
               </ul>
             </div>
             <div className="rounded-xl bg-white/10 p-4">
               <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Roanoke — Bandwidth</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>✓ Verizon validated design</li>
-                <li>On-site upgrade needed — timeline TBD</li>
-                <li>Sundays preferred (Curtis — plant 24/6)</li>
+                <li>🔍 Fusion tech on-site 7/7</li>
+                <li>Site survey + ISP equipment inventory</li>
+                <li>Waiting on external vendor</li>
+              </ul>
+            </div>
+            <div className="rounded-xl bg-white/10 p-4">
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Warehouse (ROC)</p>
+              <ul className="space-y-2 text-sm leading-6 text-white">
+                <li>✅ Network switch arrived</li>
+                <li>⏳ Awaiting access points</li>
+                <li>Then provision → schedule RCI install</li>
               </ul>
             </div>
             <div className="rounded-xl bg-white/10 p-4">
               <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Next Up</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>Confirm Roanoke site window w/ Fusion</li>
+                <li>Confirm wallpaper install date</li>
+                <li>Follow up w/ Fusion on vendor timeline</li>
                 <li>🎓 Neat training — pending install date</li>
-                <li>Install quote: <span className="font-semibold">$2,808</span></li>
               </ul>
               <div className="mt-3 border-t border-white/20 pt-3">
                 <p className="text-xs font-bold text-blue-200">Overall Readiness</p>
-                <p className="text-2xl font-bold text-white">78%</p>
+                <p className="text-2xl font-bold text-white">80%</p>
               </div>
             </div>
           </div>
@@ -343,7 +364,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400">What&apos;s happening right now</p>
           <h2 className="mt-2 text-2xl font-bold text-white sm:text-3xl">Current Status</h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {currentStatus.map((item) => {
               const t = statusToneMap[item.tone];
               return (
@@ -393,16 +414,16 @@ export default function Home() {
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <span className="text-sm font-medium text-slate-300">Current Phase</span>
                 <span className="rounded-full bg-amber-400/15 px-3 py-1 text-xs font-bold text-amber-200">
-                  Gigabit Live · Wallpaper · Roanoke Scheduling
+                  Site Survey · Wallpaper Hold · Warehouse APs
                 </span>
               </div>
               <div className="mt-5">
                 <div className="flex items-end justify-between">
-                  <span className="text-4xl font-semibold">78%</span>
+                  <span className="text-4xl font-semibold">80%</span>
                   <span className="text-sm text-slate-300">overall readiness</span>
                 </div>
                 <div className="mt-4 h-3 rounded-full bg-white/10">
-                  <div className="h-3 w-[78%] rounded-full bg-blue-400" />
+                  <div className="h-3 w-[80%] rounded-full bg-blue-400" />
                 </div>
               </div>
               <p className="mt-5 text-sm leading-6 text-slate-300">{carrierTimelineNote}</p>
@@ -523,10 +544,11 @@ export default function Home() {
         </section>
 
         <section className="mt-12">
-          <SectionHeader eyebrow="Site Status" title="Roanoke and Hauppauge readiness view" />
-          <div className="grid gap-5 lg:grid-cols-2">
+          <SectionHeader eyebrow="Site Status" title="Roanoke, Hauppauge, and Warehouse readiness view" />
+          <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
             {sites.map((site) => {
               const isGreen = site.statusTone === "green";
+              const isBlue = site.statusTone === "blue";
               return (
                 <article key={site.city} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
                   <div className="flex items-start justify-between gap-4">
@@ -538,7 +560,9 @@ export default function Home() {
                       className={`rounded-full border px-3 py-1 text-xs font-bold ${
                         isGreen
                           ? "border-emerald-200 bg-emerald-50 text-emerald-800"
-                          : "border-amber-200 bg-amber-50 text-amber-800"
+                          : isBlue
+                            ? "border-blue-200 bg-blue-50 text-blue-800"
+                            : "border-amber-200 bg-amber-50 text-amber-800"
                       }`}
                     >
                       {site.statusLabel}
@@ -547,7 +571,7 @@ export default function Home() {
                   {site.note && (
                     <p
                       className={`mt-3 rounded-lg px-3 py-2 text-sm font-medium ${
-                        isGreen ? "bg-emerald-50 text-emerald-800" : "bg-amber-50 text-amber-800"
+                        isGreen ? "bg-emerald-50 text-emerald-800" : isBlue ? "bg-blue-50 text-blue-800" : "bg-amber-50 text-amber-800"
                       }`}
                     >
                       {site.note}
@@ -564,6 +588,25 @@ export default function Home() {
                 </article>
               );
             })}
+            <article className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-2xl font-semibold text-slate-950">{warehouse.site}</h3>
+                </div>
+                <span className="rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-bold text-blue-800">
+                  {warehouse.statusLabel}
+                </span>
+              </div>
+              <p className="mt-3 rounded-lg bg-blue-50 px-3 py-2 text-sm font-medium text-blue-800">{warehouse.note}</p>
+              <dl className="mt-4 grid gap-3">
+                {warehouse.details.map(([label, value]) => (
+                  <div key={label} className="flex items-center justify-between gap-4 border-t border-slate-100 pt-3">
+                    <dt className="text-sm font-medium text-slate-500">{label}</dt>
+                    <dd className="text-right text-sm font-semibold text-slate-900">{value}</dd>
+                  </div>
+                ))}
+              </dl>
+            </article>
           </div>
         </section>
 
