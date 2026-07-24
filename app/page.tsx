@@ -126,7 +126,7 @@ const sites = [
   {
     city: "Roanoke, VA",
     address: "350 East Park Dr, Roanoke, VA 24019",
-    statusLabel: "Bandwidth In Progress",
+    statusLabel: "Upgrade Underway",
     statusTone: "amber",
     note: "Bandwidth upgrade work underway — carrier engineering and on-site infrastructure improvements. Older wireless APs and network equipment being replaced. Wall paint approved for conf room — Curtis coordinating. All Neat equipment staged. Video install August 6.",
     details: [
