@@ -9,47 +9,76 @@ const confRoomFacilities = [
     site: "Virginia Facility",
     tone: "amber",
     items: [
-      "Scheduling wall paint for Roanoke conference room before Neat install.",
-      "All new video conferencing equipment on-site and ready to go.",
-      "Video conf installer on standby — awaiting bandwidth upgrade and wall paint.",
+      "Roanoke conference room wall painting approved — Curtis coordinating.",
+      "Room prep targeted before video install on August 6.",
+      "All Neat video conferencing equipment received and staged for installation.",
     ],
   },
   {
     site: "Hauppauge Facility",
     tone: "blue",
     items: [
-      "Awaiting confirmed wallpaper install date.",
-      "All new video conferencing equipment on-site and ready to go.",
-      "Video conf installer on standby — awaiting wallpaper completion.",
+      "Conference room wallpaper installation scheduled for August 5, 2026.",
+      "All Neat video conferencing equipment received and staged.",
+      "Video conferencing installation scheduled for August 6.",
     ],
   },
 ];
 
 const confRoomInstall = [
   "Install quote received: $2,808 for 4 technicians (4-hour minimum).",
-  "All new video conf equipment ready at both VA and Hauppauge locations.",
-  "Video conf installer on standby for both sites.",
-  "Hauppauge: awaiting wallpaper install date before Neat install can proceed.",
-  "Roanoke: scheduling wall paint for conf room — install pending bandwidth upgrade.",
+  "All Neat video conferencing equipment received and staged at both locations.",
+  "Hauppauge wallpaper scheduled August 5, 2026.",
+  "Roanoke wall paint approved — Curtis coordinating room readiness.",
+  "Video conferencing installation scheduled for August 6, 2026 (after room prep).",
   "Neat staff training being coordinated for IT and Curtis — scheduled once install date is confirmed.",
   "Final testing will include Microsoft Teams meeting functionality and room device validation.",
 ];
 
 const warehouse = {
   site: "Roanoke Warehouse (ROC)",
-  statusLabel: "Switch Mounted",
+  statusLabel: "AP Upgrade In Flight",
   statusTone: "blue",
-  note: "Switch is mounted in the rack and in place. Curtis decommissioning old switch and cutting over to new switch this weekend (7/18). Access points have not arrived from Jordan — Curtis getting vendor tracking ETA. Once APs arrive: Curtis will register and provision, then RCI scheduled to install/mount/replace old WiFi APs.",
+  note: "Roanoke bandwidth upgrade work is underway with on-site infrastructure improvements. Older wireless APs and network equipment are being replaced. Meraki MR36 Wi-Fi 6 APs were unavailable — Cisco Catalyst 9164I Wi-Fi 6E APs with Meraki management were ordered and expected to arrive shortly for ROC deployment.",
   details: [
     ["Switch", "Mounted in rack and in place ✓"],
-    ["Cutover", "Curtis on-site 7/18 — decommission old switch, migrate to new"],
-    ["Access Points", "Not yet arrived from Jordan — Curtis tracking ETA with vendor"],
-    ["Next Step", "Curtis provisions APs once received"],
-    ["Install", "Schedule RCI to mount/replace old WiFi APs after provisioning"],
+    ["Bandwidth / Infra", "Upgrade underway — carrier engineering + on-site improvements"],
+    ["Legacy WiFi", "Older APs and network gear being replaced"],
+    ["New APs (ROC)", "Cisco Catalyst 9164I Wi-Fi 6E (Meraki) — ordered, arriving shortly"],
+    ["Note", "MR36 unavailable — 9164I Wi-Fi 6E substituted"],
+    ["Next Step", "Deploy new APs once received; RCI install as scheduled"],
   ],
 };
 
 const currentStatus = [
+  {
+    emoji: "🔧",
+    site: "Roanoke, VA — Bandwidth",
+    headline: "Upgrade underway",
+    detail: "Carrier engineering and on-site infrastructure improvements in progress. Older wireless APs and network equipment are being replaced as part of the upgrade.",
+    tone: "amber",
+  },
+  {
+    emoji: "📅",
+    site: "Conference Rooms",
+    headline: "Prep dates set · Install Aug 6",
+    detail: "Hauppauge wallpaper August 5. Roanoke wall paint approved — Curtis coordinating. Video conf install scheduled August 6 after room prep.",
+    tone: "green",
+  },
+  {
+    emoji: "📺",
+    site: "Video Conf — Both Sites",
+    headline: "Staged and scheduled",
+    detail: "All Neat video conferencing equipment received and staged. Installation scheduled August 6 at both locations.",
+    tone: "green",
+  },
+  {
+    emoji: "📶",
+    site: "ROC Warehouse WiFi",
+    headline: "New APs en route",
+    detail: "Cisco Catalyst 9164I Wi-Fi 6E APs (Meraki) ordered for ROC — MR36 was unavailable. Expected to arrive shortly for deployment.",
+    tone: "blue",
+  },
   {
     emoji: "✅",
     site: "Hauppauge, NY — Bandwidth",
@@ -57,45 +86,17 @@ const currentStatus = [
     detail: "1 Gbps is live and performing. Steve Viola reports much faster VPN speeds working from home.",
     tone: "green",
   },
-  {
-    emoji: "🔧",
-    site: "Roanoke, VA — Bandwidth",
-    headline: "Verizon — in progress",
-    detail: "Verizon verified physical layer and spliced new fiber. Circuit not provisioned yet. Back on-site 7/17 to replace equipment. Second team will contact for provisioning once physical work is done.",
-    tone: "amber",
-  },
-  {
-    emoji: "📺",
-    site: "Video Conf — Both Sites",
-    headline: "All gear ready — installer on standby",
-    detail: "All new video conf equipment ready at VA and Hauppauge. Installer on standby for both. Haupp awaiting wallpaper date. Roanoke scheduling wall paint.",
-    tone: "green",
-  },
-  {
-    emoji: "🔌",
-    site: "Roanoke Warehouse",
-    headline: "Switch mounted — cutover 7/18",
-    detail: "New switch mounted in rack. Curtis cutting over this weekend (7/18). APs not arrived from Jordan — tracking ETA. RCI install after Curtis provisions APs.",
-    tone: "blue",
-  },
-  {
-    emoji: "🎓",
-    site: "Neat Training",
-    headline: "Training date in progress",
-    detail: "Coordinating training for IT and Curtis with Neat staff. Will be scheduled once install dates are confirmed.",
-    tone: "blue",
-  },
 ];
 
 const carrierTimelineNote =
   "Carrier upgrade timelines with our last-mile providers average approximately 90-120 days, although in some cases the turnaround time may be sooner.";
 
 const statusPills = [
+  { label: "Roanoke Bandwidth", value: "Upgrade Underway", tone: "amber" },
+  { label: "Video Conf Install", value: "Scheduled Aug 6", tone: "green" },
+  { label: "Hauppauge Wallpaper", value: "Aug 5", tone: "blue" },
+  { label: "ROC WiFi APs", value: "Catalyst 9164I En Route", tone: "blue" },
   { label: "Hauppauge Bandwidth", value: "Gigabit Live ✓", tone: "green" },
-  { label: "Roanoke Bandwidth", value: "Verizon In Progress", tone: "amber" },
-  { label: "Video Conf", value: "Ready · Installer on Standby", tone: "green" },
-  { label: "Warehouse WiFi", value: "Switch Mounted · Cutover 7/18", tone: "blue" },
-  { label: "Hauppauge", value: "Awaiting Wallpaper Date", tone: "amber" },
 ];
 
 const videoEquipNotice =
@@ -127,27 +128,25 @@ const sites = [
     address: "350 East Park Dr, Roanoke, VA 24019",
     statusLabel: "Bandwidth In Progress",
     statusTone: "amber",
-    note: "Verizon verified physical layer and spliced new fiber — circuit not provisioned yet. Verizon back on-site 7/17 to replace more equipment. Per Curtis (7/17): second team will contact for provisioning once physical work is complete. Scheduling wall paint for conf room. All video conf equipment ready — installer on standby.",
+    note: "Bandwidth upgrade work underway — carrier engineering and on-site infrastructure improvements. Older wireless APs and network equipment being replaced. Wall paint approved for conf room — Curtis coordinating. All Neat equipment staged. Video install August 6.",
     details: [
-      ["Bandwidth", "In progress — not done yet ⏳"],
-      ["Verizon Update", "Physical layer verified, fiber spliced — circuit not provisioned"],
-      ["Verizon (7/17)", "On-site today to replace equipment; provisioning team to follow"],
-      ["Curtis Update (7/17)", "Second team will contact once physical work complete"],
-      ["DIA", "1 Gb — Pending provisioning"],
-      ["E-LAN", "1 Gb — Pending provisioning"],
-      ["Backup Circuit", "Included — available during cutover"],
+      ["Bandwidth", "Upgrade underway — carrier engineering + on-site work ⏳"],
+      ["Infrastructure", "Replacing older wireless APs and network equipment"],
+      ["DIA", "1 Gb — In progress"],
+      ["E-LAN", "1 Gb — In progress"],
+      ["Backup Circuit", "Included"],
       ["Managed Router", "Included"],
-      ["Equipment", "All new video conf gear on-site and ready ✓"],
-      ["Wall Prep", "Scheduling wall paint for conf room"],
-      ["Video Install", "Installer on standby — pending bandwidth + wall paint"],
+      ["Equipment", "All Neat video conf gear received and staged ✓"],
+      ["Wall Prep", "Wall paint approved — Curtis coordinating"],
+      ["Video Install", "Scheduled August 6, 2026"],
     ],
   },
   {
     city: "Hauppauge, NY",
     address: "700 Veterans Hwy, Suite 300, Hauppauge, NY 11788",
-    statusLabel: "Awaiting Wallpaper",
-    statusTone: "amber",
-    note: "Bandwidth fully upgraded to Gigabit. Awaiting wallpaper install date. All new video conf equipment on-site and ready. Video conf installer on standby for Hauppauge.",
+    statusLabel: "Install Scheduled",
+    statusTone: "green",
+    note: "Bandwidth fully upgraded to Gigabit. Wallpaper scheduled August 5. All Neat equipment received and staged. Video conferencing installation scheduled August 6.",
     details: [
       ["Bandwidth", "1 Gbps — fully upgraded and live ✓"],
       ["User Feedback", "Steve Viola — faster VPN speeds from home"],
@@ -155,10 +154,10 @@ const sites = [
       ["E-LAN", "1 Gb"],
       ["Backup Circuit", "Included"],
       ["Managed Router", "Included"],
-      ["Equipment", "All new video conf gear on-site and ready ✓"],
-      ["Wallpaper", "Awaiting install date — blocks Neat install"],
-      ["Video Install", "Installer on standby — pending wallpaper date"],
-      ["Training", "Neat staff training for IT + Curtis — pending install date"],
+      ["Equipment", "All Neat video conf gear received and staged ✓"],
+      ["Wallpaper", "Scheduled August 5, 2026"],
+      ["Video Install", "Scheduled August 6, 2026"],
+      ["Training", "Neat staff training for IT + Curtis — pending install"],
     ],
   },
 ];
@@ -170,11 +169,11 @@ const timeline = [
   { label: "Equipment ordered — Neat Board Pro, displays, wall mounts (5/27)", state: "complete" },
   { label: "All equipment on-site at both locations ✓", state: "complete" },
   { label: "Hauppauge: fully upgraded to Gigabit — VPN performance improved ✓", state: "complete" },
-  { label: "Roanoke: Verizon physical layer work — fiber spliced, provisioning pending (7/17)", state: "active" },
-  { label: "Warehouse: switch mounted — Curtis cutover 7/18; APs pending from Jordan", state: "active" },
-  { label: "Video conf: all gear ready both sites — installer on standby", state: "active" },
-  { label: "Hauppauge: awaiting wallpaper date · Roanoke: scheduling wall paint", state: "active" },
-  { label: "Install / cutover — both sites", state: "upcoming" },
+  { label: "Roanoke: bandwidth upgrade underway — carrier engineering + infrastructure replacements", state: "active" },
+  { label: "ROC warehouse: Cisco Catalyst 9164I Wi-Fi 6E APs ordered — arriving shortly", state: "active" },
+  { label: "All Neat video conf equipment received and staged — install scheduled Aug 6", state: "active" },
+  { label: "Hauppauge wallpaper Aug 5 · Roanoke wall paint (Curtis) — prep before Aug 6 install", state: "active" },
+  { label: "Video conf install / cutover — both sites (August 6, 2026)", state: "active" },
   { label: "Validation and user testing (incl. Microsoft Teams)", state: "upcoming" },
   { label: "Completed", state: "upcoming" },
 ];
@@ -209,11 +208,11 @@ const projectDetails = [
   ["Router", "Managed Router included"],
   ["Sites", "Roanoke VA and Hauppauge NY"],
   ["Hauppauge Bandwidth", "Fully upgraded to Gigabit — Steve Viola reporting faster VPN from home ✓"],
-  ["Hauppauge Neat Install", "Awaiting wallpaper date — all gear ready, installer on standby"],
-  ["Roanoke Bandwidth", "Verizon in progress — physical layer done, circuit not provisioned (7/17 update)"],
-  ["Roanoke Conf Room", "Scheduling wall paint — all gear ready, installer on standby"],
-  ["Roanoke Warehouse WiFi", "Switch mounted — Curtis cutover 7/18; APs pending from Jordan, RCI after provision"],
-  ["Video Conf Install", "All new equipment ready at both locations — installer on standby VA/Haupp"],
+  ["Hauppauge Wallpaper", "Scheduled August 5, 2026"],
+  ["Roanoke Bandwidth", "Upgrade underway — carrier engineering and on-site infrastructure improvements"],
+  ["Roanoke Conf Room", "Wall paint approved — Curtis coordinating; video install Aug 6"],
+  ["Roanoke Warehouse WiFi", "Catalyst 9164I Wi-Fi 6E APs (Meraki) ordered for ROC — MR36 substitute, arriving shortly"],
+  ["Video Conf Install", "All Neat equipment staged — installation scheduled August 6, 2026"],
   ["Roanoke Equipment", "Neat Board Pro 65\", 65\" TV, wall mount — all on-site ✓"],
   ["Install Quote", "$2,808 — 4 techs, 4-hour minimum"],
   ["Neat Training", "Coordinating with Neat staff for IT + Curtis — pending install date"],
@@ -233,14 +232,14 @@ const benefits = [
 ];
 
 const nextSteps = [
-  "Confirm Hauppauge wallpaper install date",
-  "Schedule Roanoke conf room wall paint",
-  "Monitor Verizon provisioning team contact after 7/17 equipment replacement",
-  "Curtis warehouse switch cutover — weekend 7/18",
-  "Track Jordan AP delivery ETA with vendor; Curtis to provision once received",
-  "Schedule RCI for warehouse WiFi AP install after provisioning",
-  "Schedule video conf install at both sites once wall prep + bandwidth are ready",
-  "Schedule Neat staff training once install dates confirmed",
+  "Complete Hauppauge wallpaper — August 5, 2026",
+  "Complete Roanoke conf room wall paint (Curtis coordinating)",
+  "Video conferencing installation — August 6, 2026 (both sites)",
+  "Deploy Cisco Catalyst 9164I APs at ROC warehouse when received",
+  "Continue Roanoke bandwidth upgrade and legacy AP/network equipment replacement",
+  "Schedule Neat staff training for IT and Curtis around go-live",
+  "Run post-install speed and Teams validation at Roanoke",
+  "Document final network and AV setup",
 ];
 
 const toneClasses: Record<string, string> = {
@@ -319,43 +318,43 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-200">Project Update</p>
-            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-white">July 17, 2026</span>
+            <span className="rounded-full bg-white/15 px-3 py-1 text-xs font-bold text-white">July 24, 2026</span>
           </div>
           <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-xl bg-white/10 p-4">
               <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Roanoke — Bandwidth</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>🔧 Verizon — in progress (not done)</li>
-                <li>Fiber spliced, circuit not provisioned</li>
-                <li>Back 7/17 for equipment; provisioning team to follow</li>
+                <li>🔧 Upgrade underway</li>
+                <li>Carrier engineering + on-site work</li>
+                <li>Replacing legacy APs and network gear</li>
               </ul>
             </div>
             <div className="rounded-xl bg-white/10 p-4">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Video Conf — Both Sites</p>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Conference Rooms</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>✅ All new gear ready VA + Haupp</li>
-                <li>Installer on standby both locations</li>
-                <li>Haupp: awaiting wallpaper · Roanoke: scheduling paint</li>
+                <li>📅 Haupp wallpaper — <span className="font-semibold">Aug 5</span></li>
+                <li>🎨 Roanoke paint — Curtis coordinating</li>
+                <li>📺 Video install — <span className="font-semibold">Aug 6</span></li>
               </ul>
             </div>
             <div className="rounded-xl bg-white/10 p-4">
-              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Warehouse WiFi (ROC)</p>
+              <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">ROC Warehouse WiFi</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>✅ Switch mounted in rack</li>
-                <li>Curtis cutover 7/18 — old → new switch</li>
-                <li>APs pending from Jordan · RCI after provision</li>
+                <li>Cisco Catalyst 9164I Wi-Fi 6E (Meraki)</li>
+                <li>Substitute for unavailable MR36</li>
+                <li>Expected to arrive shortly</li>
               </ul>
             </div>
             <div className="rounded-xl bg-white/10 p-4">
               <p className="mb-2 text-xs font-bold uppercase tracking-wide text-blue-200">Next Up</p>
               <ul className="space-y-2 text-sm leading-6 text-white">
-                <li>Verizon provisioning team contact</li>
-                <li>Wallpaper + wall paint dates</li>
-                <li>Schedule installs once ready</li>
+                <li>All Neat gear staged at both sites</li>
+                <li>Room prep then Aug 6 install</li>
+                <li>Neat training around go-live</li>
               </ul>
               <div className="mt-3 border-t border-white/20 pt-3">
                 <p className="text-xs font-bold text-blue-200">Overall Readiness</p>
-                <p className="text-2xl font-bold text-white">83%</p>
+                <p className="text-2xl font-bold text-white">89%</p>
               </div>
             </div>
           </div>
@@ -417,16 +416,16 @@ export default function Home() {
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <span className="text-sm font-medium text-slate-300">Current Phase</span>
                 <span className="rounded-full bg-amber-400/15 px-3 py-1 text-xs font-bold text-amber-200">
-                  Verizon · Video Ready · Warehouse Cutover
+                  Aug 5–6 Install · Bandwidth Underway
                 </span>
               </div>
               <div className="mt-5">
                 <div className="flex items-end justify-between">
-                  <span className="text-4xl font-semibold">83%</span>
+                  <span className="text-4xl font-semibold">89%</span>
                   <span className="text-sm text-slate-300">overall readiness</span>
                 </div>
                 <div className="mt-4 h-3 rounded-full bg-white/10">
-                  <div className="h-3 w-[83%] rounded-full bg-blue-400" />
+                  <div className="h-3 w-[89%] rounded-full bg-blue-400" />
                 </div>
               </div>
               <p className="mt-5 text-sm leading-6 text-slate-300">{carrierTimelineNote}</p>
